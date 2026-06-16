@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuzi Chen · Resume + Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Spline+Sans+Mono:wght@400;500&display=swap');
+  :root{
+    --bg:#ECEAE6; --sheet:#FCFBF9; --side:#F4F2EE;
+    --ink:#23211E; --ink-2:#56524B; --ink-3:#8C877D;
+    --hair:#E2DED6; --hair-2:#D4CFC5;
+    --purple:#4B2E6F; --purple-soft:#6B4A92; --purple-tint:#F0EBF5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,'Noto Sans SC',sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;line-height:1.6;padding:36px 20px}
+  body.locked{overflow:hidden}
+  .serif{font-family:'Noto Serif SC',serif}
+  .sheet{max-width:1080px;margin:0 auto;background:var(--sheet);box-shadow:0 18px 60px rgba(40,35,28,.12);border-radius:6px;overflow:hidden;display:grid;grid-template-columns:320px 1fr}
+  .side{background:var(--side);border-right:1px solid var(--hair);padding:40px 32px}
+  .avatar{width:150px;height:150px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 24px;border:3px solid #fff;box-shadow:0 6px 20px rgba(75,46,111,.18)}
+  .name{text-align:center}
+  .name h1{font-family:'Noto Serif SC',Georgia,serif;font-weight:700;font-size:34px;letter-spacing:.08em;color:var(--ink);line-height:1.05}
+  .name .cn{display:block;font-family:'Noto Serif SC','Songti SC','STSong','PingFang SC',serif;font-size:18px;color:var(--ink-3);letter-spacing:.18em;margin-top:8px;font-weight:600;line-height:1.2}
+  .name .title{display:inline-block;margin-top:14px;font-size:11.5px;color:var(--purple);background:var(--purple-tint);border-radius:20px;padding:6px 14px;letter-spacing:.04em;font-weight:600}
+  .contact{margin-top:28px;display:flex;flex-direction:column;gap:9px}
+  .contact a,.contact span{font-size:12.5px;color:var(--ink-2);display:flex;align-items:center;gap:10px;text-decoration:none}
+  .contact .ic{width:14px;text-align:center;color:var(--purple-soft)}
+  .side h3{font-family:'Noto Serif SC',Georgia,serif;font-weight:600;font-size:16px;margin:30px 0 12px;padding-bottom:8px;border-bottom:1.5px solid var(--ink);letter-spacing:.02em}
+  .intro{font-size:12.6px;color:var(--ink-2);line-height:1.68;text-align:left}
+  .edu .item{padding:13px 0;border-bottom:1px solid var(--hair)}
+  .edu .item:last-child{border-bottom:none}
+  .edu .sch{font-size:13px;font-weight:500;color:var(--ink)}
+  .edu .deg{font-size:12px;color:var(--ink-2);margin:3px 0}
+  .edu .meta{font-size:10.5px;color:var(--ink-3);letter-spacing:.04em;display:flex;justify-content:space-between;margin-top:4px}
+  .edu .gpa{color:var(--purple-soft);font-weight:500}
+  .skills{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+  .skills .s{font-size:11px;color:var(--ink-2);background:#fff;border:1px solid var(--hair-2);border-radius:5px;padding:4px 9px}
+  .tabs{display:flex;border-bottom:1px solid var(--hair);position:sticky;top:0;background:var(--sheet);z-index:5}
+  .tab{flex:1;padding:20px 16px;background:none;border:none;cursor:pointer;font-family:inherit;font-size:14px;font-weight:600;color:var(--ink-3);position:relative;transition:color .2s;letter-spacing:.02em}
+  .tab .sub{display:block;font-size:10px;color:var(--ink-3);font-weight:400;margin-top:3px;letter-spacing:.1em;text-transform:uppercase;font-family:'Spline Sans Mono'}
+  .tab:hover{color:var(--ink-2)}
+  .tab.active{color:var(--purple)}
+  .tab.active .sub{color:var(--purple-soft)}
+  .tab.active::after{content:'';position:absolute;left:0;bottom:-1px;width:100%;height:2.5px;background:var(--purple)}
+  .panel{display:none;padding:38px 42px 48px;animation:fade .4s ease}
+  .panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .exp{position:relative;padding-left:24px}
+  .exp::before{content:'';position:absolute;left:5px;top:8px;bottom:8px;width:1.5px;background:var(--hair-2)}
+  .job{position:relative;padding:0 0 30px}
+  .job:last-child{padding-bottom:4px}
+  .job::before{content:'';position:absolute;left:-22.5px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--purple);box-shadow:0 0 0 3px var(--purple-tint)}
+  .job .jh{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px}
+  .job .role{font-size:16px;font-weight:700;color:var(--ink)}
+  .job .date{font-family:'Spline Sans Mono';font-size:11.5px;color:var(--ink-3)}
+  .job .org{font-size:13px;color:var(--purple-soft);font-weight:500;margin:3px 0 11px}
+  .job .org .note{font-size:11px;color:var(--ink-3);font-weight:300}
+  .job ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+  .job li{font-size:12.7px;color:var(--ink-2);line-height:1.66;padding-left:15px;position:relative}
+  .job li::before{content:'';position:absolute;left:0;top:9px;width:4px;height:4px;border-radius:50%;background:var(--hair-2)}
+  .job li b{color:var(--ink);font-weight:500}
+  .pf-note{background:var(--purple-tint);border-radius:8px;padding:14px 18px;font-size:12.5px;color:var(--purple);line-height:1.6;margin-bottom:26px;display:flex;gap:11px}
+  .pf-note .ic{flex-shrink:0}
+  .pf-note b{font-weight:700}
+  .work{border:1px solid var(--hair);border-radius:10px;margin-bottom:12px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+  .work:hover{border-color:var(--hair-2);box-shadow:0 4px 16px rgba(40,35,28,.05)}
+  .work.open{border-color:var(--purple-soft)}
+  .wh{display:grid;grid-template-columns:1fr auto 22px;gap:18px;align-items:center;padding:18px 22px;cursor:pointer}
+  .wh .wt{font-size:15px;font-weight:500;color:var(--ink)}
+  .wh .wt .ph{display:inline-block;font-family:'Spline Sans Mono';font-size:9.5px;color:var(--purple-soft);background:var(--purple-tint);border-radius:4px;padding:2px 7px;margin-right:10px;letter-spacing:.08em;vertical-align:middle}
+  .wh .wt .myrole{display:block;font-size:11.5px;color:var(--ink-3);font-weight:400;margin-top:5px}
+  .wh .wtag{font-family:'Spline Sans Mono';font-size:11px;color:var(--ink-3);white-space:nowrap}
+  .wh .wx{font-family:'Noto Serif SC';font-size:20px;color:var(--purple-soft);text-align:center;transition:transform .3s}
+  .work.open .wx{transform:rotate(45deg)}
+  .wb{max-height:0;overflow:hidden;transition:max-height .45s ease}
+  .work.open .wb{max-height:600px}
+  .wb-in{padding:0 22px 24px;border-top:1px solid var(--hair);margin-top:2px;padding-top:18px;display:grid;grid-template-columns:1fr 280px;gap:32px}
+  .wb-in .mypart{font-size:12.5px;color:var(--ink-2);line-height:1.75}
+  .wb-in .mypart .lbl{font-family:'Spline Sans Mono';font-size:10px;letter-spacing:.12em;color:var(--purple-soft);text-transform:uppercase;display:block;margin-bottom:8px}
+  .wb-in .mypart p{margin-bottom:14px}
+  .wb-in .read{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--purple);border:1px solid var(--purple-soft);border-radius:7px;padding:9px 16px;cursor:pointer;transition:background .2s,color .2s;background:none;font-family:inherit}
+  .wb-in .read:hover{background:var(--purple);color:#fff}
+  .findings{background:var(--side);border-radius:9px;padding:16px 18px;align-self:start}
+  .findings .fh{font-family:'Spline Sans Mono';font-size:10px;letter-spacing:.12em;color:var(--ink-3);text-transform:uppercase;margin-bottom:13px}
+  .findings .fr{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px dotted var(--hair-2);font-size:12.5px;color:var(--ink-2)}
+  .findings .fr:last-child{border-bottom:none}
+  .findings .fr b{font-family:'Spline Sans Mono';color:var(--purple);font-weight:500;font-size:13px}
+  .hl-group{margin-bottom:30px}
+  .hl-group:last-child{margin-bottom:0}
+  .hl-gh{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;padding-bottom:9px;border-bottom:1.5px solid var(--ink)}
+  .hl-gh .co{font-family:'Noto Serif SC';font-weight:600;font-size:16px;color:var(--ink)}
+  .hl-gh .ro{font-size:11.5px;color:var(--purple-soft);font-weight:500}
+  .hl-gh .yr{font-family:'Spline Sans Mono';font-size:11px;color:var(--ink-3);margin-left:auto}
+  .hl-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .hl-row.two{grid-template-columns:repeat(2,1fr)}
+  .hl2{background:var(--side);border:1px solid var(--hair);border-radius:10px;padding:18px 18px 16px;transition:border-color .2s,transform .2s}
+  .hl2:hover{border-color:var(--purple-soft);transform:translateY(-2px)}
+  .hl2 .v{font-family:'Noto Serif SC';font-size:33px;font-weight:700;color:var(--purple);line-height:1;letter-spacing:-.01em}
+  .hl2 .v small{font-size:17px;color:var(--purple-soft)}
+  .hl2 .l{font-size:12px;color:var(--ink-2);margin-top:9px;line-height:1.5;font-weight:400}
+  .hl2 .pj{font-family:'Spline Sans Mono';font-size:9.5px;color:var(--ink-3);margin-top:8px;letter-spacing:.02em;text-transform:none}
+  .overlay{position:fixed;inset:0;background:rgba(35,30,25,.5);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .35s;z-index:50}
+  .overlay.show{opacity:1;pointer-events:auto}
+  .modal{position:fixed;top:0;right:0;height:100%;width:min(760px,92vw);background:var(--sheet);box-shadow:-12px 0 50px rgba(40,35,28,.25);transform:translateX(100%);transition:transform .42s cubic-bezier(.4,0,.2,1);z-index:51;display:flex;flex-direction:column}
+  .modal.show{transform:translateX(0)}
+  .modal-bar{display:flex;align-items:center;justify-content:space-between;padding:18px 30px;border-bottom:1px solid var(--hair);background:var(--sheet)}
+  .modal-bar .mtag{font-family:'Spline Sans Mono';font-size:11px;letter-spacing:.14em;color:var(--purple-soft);text-transform:uppercase}
+  .modal-close{background:none;border:1px solid var(--hair-2);width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:18px;color:var(--ink-2);display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s}
+  .modal-close:hover{background:var(--purple-tint);border-color:var(--purple-soft);color:var(--purple)}
+  .modal-scroll{overflow-y:auto;padding:36px 44px 70px}
+  .doc-disclaimer{font-size:11.5px;color:var(--ink-3);background:var(--side);border-left:3px solid var(--purple-soft);padding:11px 16px;border-radius:0 6px 6px 0;margin-bottom:30px;line-height:1.65}
+  .report h2{font-family:'Noto Serif SC';font-weight:700;font-size:26px;color:var(--ink);line-height:1.35;margin-bottom:6px;letter-spacing:.01em}
+  .report section{margin-top:30px}
+  .report h3{font-family:'Noto Serif SC';font-weight:600;font-size:17px;color:var(--purple);margin-bottom:11px;padding-left:13px;border-left:3px solid var(--purple-soft);line-height:1.4}
+  .report p{font-size:13.5px;color:var(--ink-2);line-height:1.85;margin-bottom:12px}
+  .report ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin:6px 0 14px}
+  .report li{font-size:13.5px;color:var(--ink-2);line-height:1.7;padding-left:18px;position:relative}
+  .report li::before{content:'';position:absolute;left:2px;top:10px;width:5px;height:5px;border-radius:50%;background:var(--purple-soft)}
+  .report strong{color:var(--purple);font-weight:600}
+  .report blockquote{background:var(--purple-tint);border-radius:8px;padding:14px 18px;font-size:13px;color:var(--purple);line-height:1.7;margin:14px 0;font-style:normal}
+  .report table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px}
+  .report th{background:var(--side);color:var(--ink);font-weight:600;text-align:left;padding:10px 12px;border-bottom:2px solid var(--hair-2);font-size:12px}
+  .report td{padding:9px 12px;border-bottom:1px solid var(--hair);color:var(--ink-2)}
+  .report tr:hover td{background:var(--side)}
+  .report code{font-family:'Spline Sans Mono';font-size:12px;background:var(--side);padding:1px 6px;border-radius:4px;color:var(--purple-soft)}
+  .modal-scroll::-webkit-scrollbar{width:10px}
+  .modal-scroll::-webkit-scrollbar-thumb{background:var(--hair-2);border-radius:5px;border:3px solid var(--sheet)}
+  @media(max-width:860px){
+    .sheet{grid-template-columns:1fr}
+    .side{border-right:none;border-bottom:1px solid var(--hair)}
+    .wb-in{grid-template-columns:1fr}
+    .hl-row,.hl-row.two{grid-template-columns:repeat(2,1fr)}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <aside class="side">
+    <img class="avatar" src="assets/avatar-round.png" alt="Yuzi Chen">
+    <div class="name">
+      <h1>YUZI CHEN</h1>
+      <div class="cn">陈羽姿</div>
+      <div class="title">Influencer Marketing · Creator Ops</div>
+    </div>
+    <div class="contact">
+      <a href="mailto:yuzichen13@gmail.com"><span class="ic">✉</span>yuzichen13@gmail.com</a>
+      <span><span class="ic">☏</span>156-1230-1133</span>
+    </div>
+    <h3>Profile</h3>
+    <p class="intro">Communication graduate trained at Northwestern University, UC Irvine, and University of the Arts London. I work across influencer marketing, creator operations, content strategy, and data-informed growth, turning campaign performance, recruiting workflows, and audience signals into clear operating decisions.</p>
+    <h3>Education</h3>
+    <div class="edu">
+      <div class="item">
+        <div class="sch">Northwestern University · M.S.</div>
+        <div class="deg">Communication</div>
+        <div class="meta"><span>2022.09 – 2023.08</span><span class="gpa">GPA 3.9 · Top 10</span></div>
+      </div>
+      <div class="item">
+        <div class="sch">University of California, Irvine · B.A.</div>
+        <div class="deg">Media Arts</div>
+        <div class="meta"><span>2018.09 – 2021.12</span><span class="gpa">GPA 3.903 · Top 10</span></div>
+      </div>
+      <div class="item">
+        <div class="sch">University of the Arts London · Certificate</div>
+        <div class="deg">Applied Marketing & Media Management</div>
+        <div class="meta"><span>2021.07 – 2021.09</span><span></span></div>
+      </div>
+    </div>
+    <h3>Core Skills</h3>
+    <div class="skills">
+      <span class="s">Influencer Marketing</span><span class="s">Creator Recruiting</span>
+      <span class="s">Content Strategy</span><span class="s">Data Analysis</span>
+      <span class="s">AI Workflow Automation</span><span class="s">Competitive Research</span>
+      <span class="s">Cross-platform Campaigns</span><span class="s">Community Training</span>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="tabs">
+      <button class="tab active" data-p="exp">Experience<span class="sub">Experience</span></button>
+      <button class="tab" data-p="work">Projects<span class="sub">Projects</span></button>
+      <button class="tab" data-p="hl">Highlights<span class="sub">Highlights</span></button>
+    </div>
+
+    <section class="panel active" id="exp">
+      <div class="exp">
+        <div class="job">
+          <div class="jh"><span class="role">Influencer Marketing Manager</span><span class="date">2025.07 – Present</span></div>
+          <div class="org">Solvely.ai　<span class="note">· an AI learning tool for North American students</span></div>
+          <ul>
+            <li>North America influencer marketing: managed outreach, partnership negotiation, content co-creation, script guidance, pricing communication, and posting schedules for top- to mid-tier KOLs across TikTok / Instagram / YouTube.</li>
+            <li>Student Creator recruiting and community operations: participated in recruiting, screening, training, and daily content management; signed <b>300+</b> student Creators, supported a team UGC pipeline of <b>2,500+</b> weekly pieces, and reached <b>1,500+</b> Creators per day.</li>
+            <li>AI automation and workflow optimization: used Cursor / Codex / Claude and other AI tools to build creator scoring, automated email outreach, creator contact collection, and Onboarding workflows, reducing repetitive screening, follow-up, and status maintenance work.</li>
+            <li>Data analysis and strategy review: analyzed content performance, CPM, organic exposure, conversion signals, and recruiting data; delivered campaign reviews, channel analysis, and competitive benchmarking to support Creator recruiting, content direction, and paid / organic strategy iteration.</li>
+            <li>Cross-platform campaign execution: participated in the Back-to-School integrated campaign, where KOL and student Creator tracks jointly delivered <b>40M+</b> impressions and achieved <b>178%</b> of the target; the broader team recap recorded <b>68M</b> total impressions and <b>164%</b> target completion.</li>
+          </ul>
+        </div>
+        <div class="job">
+          <div class="jh"><span class="role">Social Media Creator</span><span class="date">2022 – Present</span></div>
+          <div class="org">Xiaohongshu / Douyin / TikTok / Instagram</div>
+          <ul>
+            <li>Built a personal lifestyle content brand across major social platforms, growing a cumulative audience of <b>100K+</b> followers; top-performing posts reached <b>5M+</b> views on Xiaohongshu and <b>4M+</b> views on Douyin.</li>
+            <li>Refined content strategy through data analysis and audience insights, driving <b>476%</b> account growth within 90 days, with 800K+ monthly interactions and 10K+ new monthly followers.</li>
+            <li>Collaborated with 50+ brands across industries, aligning brand value with personal content style to create mutually beneficial campaigns.</li>
+          </ul>
+        </div>
+        <div class="job">
+          <div class="jh"><span class="role">Key Account Manager</span><span class="date">2023.10 – 2025.04</span></div>
+          <div class="org">Wahool　<span class="note">· cross-border livestream commerce service provider</span></div>
+          <ul>
+            <li>Delivered end-to-end TikTok livestream operations and localized livestream solutions for <b>15+</b> cross-border brands entering the North American market.</li>
+            <li>Operated a “Brand × Creator” collaboration model: managed influencer / host selection, recruiting, and training, and designed customized training modules.</li>
+            <li>Monitored 12 core metrics including ROI, GMV, and retention time; optimized traffic allocation through A/B testing and supported a client renewal rate above <b>85%</b>.</li>
+            <li>Built a 1,000+ cross-border host resource database and used a tiered evaluation system to support training and guidance.</li>
+          </ul>
+        </div>
+        <div class="job">
+          <div class="jh"><span class="role">Corporate Communications & Financial PR Intern</span><span class="date">2022.11 – 2023.05</span></div>
+          <div class="org">Edelman China</div>
+          <ul>
+            <li>Planned article and research topics based on industry trends; drafted social media strategies and content for corporate and financial clients.</li>
+            <li>Polished and proofread message houses, CVPs, bilingual financial news summaries, and e-commerce market highlight reports.</li>
+            <li>Analyzed key metrics to measure and optimize marketing performance and generated client reports.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="work">
+      <div class="pf-note">
+        <span class="ic">✦</span>
+        <span>The following projects were completed during my role at <b>Solvely.ai</b>, an AI learning tool for North American students. For team or campaign outcomes, my role is described separately from broader collaborative results. Click a card to expand, then open the sanitized full report.</span>
+      </div>
+
+      <div class="work">
+        <div class="wh" onclick="toggleWork(this)">
+          <span class="wt"><span class="ph">RECAP</span>Back-to-School Creator Campaign Review
+            <span class="myrole">My role: managed the student Creator track, including recruiting, onboarding guidance, content follow-up, and recap documentation</span>
+          </span>
+          <span class="wtag">2025.11.05–12.15</span>
+          <span class="wx">+</span>
+        </div>
+        <div class="wb"><div class="wb-in">
+          <div class="mypart">
+            <span class="lbl">What I Did</span>
+            <p>In this integrated team campaign, I managed the student Creator track: recruiting, onboarding follow-up, daily content guidance, asset management, and post-campaign recap writing. The recap organized content performance, creator operations, paid amplification, organic exposure, and next-step optimization directions.</p>
+            <button class="read" onclick="openReport('r1')">Open Full Report →</button>
+          </div>
+          <div class="findings">
+            <div class="fh">Team Campaign Results</div>
+            <div class="fr"><span>Total impressions</span><b>68M</b></div>
+            <div class="fr"><span>Target completion</span><b>164%</b></div>
+            <div class="fr"><span>CPM vs. prior cycle</span><b>↓21.1%</b></div>
+            <div class="fr"><span>Viral rate</span><b>1.88%</b></div>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="work">
+        <div class="wh" onclick="toggleWork(this)">
+          <span class="wt"><span class="ph">AI WORKFLOW</span>AI & Automation in Creator Operations
+            <span class="myrole">My role: mapped operating pain points and worked with technical teammates to integrate AI scoring, email automation, and contact collection into daily workflows</span>
+          </span>
+          <span class="wtag">AI · Automation</span>
+          <span class="wx">+</span>
+        </div>
+        <div class="wb"><div class="wb-in">
+          <div class="mypart">
+            <span class="lbl">What I Did</span>
+            <p>For repetitive recruiting and review tasks, I helped define where AI could support judgment, then translated scoring assistance, email outreach, and contact collection into reusable workflows that reduced manual screening and tracking costs.</p>
+            <button class="read" onclick="openReport('r4')">Open Full Document →</button>
+          </div>
+          <div class="findings">
+            <div class="fh">Workflow Coverage</div>
+            <div class="fr"><span>AI video screening</span><b>Multimodal</b></div>
+            <div class="fr"><span>Email outreach</span><b>Automated</b></div>
+            <div class="fr"><span>Creator contacts</span><b>Skill</b></div>
+            <div class="fr"><span>Calibration sample</span><b>720</b></div>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="work">
+        <div class="wh" onclick="toggleWork(this)">
+          <span class="wt"><span class="ph">ANALYSIS</span>Creator Recruiting Channel Analysis
+            <span class="myrole">My role: organized recruiting data and analyzed channel quality, regional structure, and conversion trends</span>
+          </span>
+          <span class="wtag">1,106 samples</span>
+          <span class="wx">+</span>
+        </div>
+        <div class="wb"><div class="wb-in">
+          <div class="mypart">
+            <span class="lbl">What I Did</span>
+            <p>I reviewed full-cycle recruiting applications through a multi-dimensional framework, connecting source channel, candidate quality, regional fit, and time trend analysis to help the team decide where to keep investing and where to adjust screening criteria.</p>
+            <button class="read" onclick="openReport('r2')">Open Full Report →</button>
+          </div>
+          <div class="findings">
+            <div class="fh">Analysis Dimensions</div>
+            <div class="fr"><span>Applications</span><b>1,106</b></div>
+            <div class="fr"><span>Channel quality</span><b>Tiered</b></div>
+            <div class="fr"><span>Regional fit</span><b>Analyzed</b></div>
+            <div class="fr"><span>Trend changes</span><b>Monthly</b></div>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="work">
+        <div class="wh" onclick="toggleWork(this)">
+          <span class="wt"><span class="ph">RESEARCH</span>Competitive Benchmarking & Recruiting Strategy
+            <span class="myrole">My role: organized samples, broke down metrics, and produced strategic observations for recruiting and content direction</span>
+          </span>
+          <span class="wtag">697 accounts · 14,914 videos</span>
+          <span class="wx">+</span>
+        </div>
+        <div class="wb"><div class="wb-in">
+          <div class="mypart">
+            <span class="lbl">What I Did</span>
+            <p>I studied TikTok account and video samples from three competitor brands and built a comparison framework covering account structure, content performance, activity status, and viral content patterns, supporting market judgment and recruiting direction.</p>
+            <button class="read" onclick="openReport('r3')">Open Full Report →</button>
+          </div>
+          <div class="findings">
+            <div class="fh">Research Scope</div>
+            <div class="fr"><span>Accounts</span><b>697</b></div>
+            <div class="fr"><span>Video samples</span><b>14,914</b></div>
+            <div class="fr"><span>Account structure</span><b>Tiered</b></div>
+            <div class="fr"><span>Content patterns</span><b>Mapped</b></div>
+          </div>
+        </div></div>
+      </div>
+    </section>
+
+    <section class="panel" id="hl">
+      <div class="hl-group">
+        <div class="hl-gh"><span class="co">Solvely.ai</span><span class="ro">Influencer Marketing Manager</span><span class="yr">2025.07 – Present</span></div>
+        <div class="hl-row">
+          <div class="hl2"><div class="v">40<small>M+</small></div><div class="l">Dual-track campaign impressions, reaching 178% of target</div><div class="pj">2025 Back-to-School Campaign</div></div>
+          <div class="hl2"><div class="v">300<small>+</small></div><div class="l">Student Creators signed</div><div class="pj">Creator Recruiting & Community Ops</div></div>
+          <div class="hl2"><div class="v">2,500<small>+</small></div><div class="l">Weekly UGC pieces produced by the team pipeline</div><div class="pj">Creator Content Pipeline</div></div>
+          <div class="hl2"><div class="v">AI<small>Automation</small></div><div class="l">Used Cursor / Codex / Claude to build creator scoring, email, contact collection, and Onboarding workflows</div><div class="pj">AI Workflow Automation</div></div>
+          <div class="hl2"><div class="v">1,106<small>apps</small></div><div class="l">Recruiting application sample used for channel quality, regional structure, and trend analysis</div><div class="pj">Data Research & Decision Support</div></div>
+          <div class="hl2"><div class="v">1,500<small>+</small></div><div class="l">Creators reached per day, with ongoing organic exposure and short-form content tracking</div><div class="pj">Organic Growth & Viral Content</div></div>
+        </div>
+      </div>
+
+      <div class="hl-group">
+        <div class="hl-gh"><span class="co">Wahool</span><span class="ro">Key Account Manager</span><span class="yr">2023.10 – 2025.04</span></div>
+        <div class="hl-row">
+          <div class="hl2"><div class="v">15<small>+</small></div><div class="l">Cross-border brands served for North America market entry</div><div class="pj">TikTok Livestream Commerce</div></div>
+          <div class="hl2"><div class="v">85<small>%+</small></div><div class="l">Client renewal rate</div><div class="pj">Data-driven Livestream Ops</div></div>
+          <div class="hl2"><div class="v">1,000<small>+</small></div><div class="l">Cross-border host / creator resource database with tiered evaluation</div><div class="pj">Brand × Creator Collaboration</div></div>
+        </div>
+      </div>
+
+      <div class="hl-group">
+        <div class="hl-gh"><span class="co">Personal Social Media</span><span class="ro">Social Media Creator</span><span class="yr">2022 – Present</span></div>
+        <div class="hl-row">
+          <div class="hl2"><div class="v">100<small>K+</small></div><div class="l">Cumulative followers across major social platforms</div><div class="pj">Xiaohongshu / Douyin / TikTok / IG</div></div>
+          <div class="hl2"><div class="v">476<small>%</small></div><div class="l">90-day account growth rate</div><div class="pj">Data-informed Content Strategy</div></div>
+          <div class="hl2"><div class="v">5<small>M+</small></div><div class="l">Highest single-post views on Xiaohongshu</div><div class="pj">Viral Content Creation</div></div>
+        </div>
+      </div>
+
+      <div class="hl-group">
+        <div class="hl-gh"><span class="co">Edelman China</span><span class="ro">Corporate Communications & Financial PR Intern</span><span class="yr">2022.11 – 2023.05</span></div>
+        <div class="hl-row two">
+          <div class="hl2"><div class="v">CN/EN<small>Bilingual</small></div><div class="l">Financial news and e-commerce market highlight research</div><div class="pj">Corporate / Financial Communications</div></div>
+          <div class="hl2"><div class="v">12<small>metrics</small></div><div class="l">Periodic analysis and optimization of core marketing indicators</div><div class="pj">Client Reporting & Measurement</div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeReport()"></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="modal-bar">
+    <span class="mtag" id="modalTag">Full Report</span>
+    <button class="modal-close" onclick="closeReport()" aria-label="Close">×</button>
+  </div>
+  <div class="modal-scroll">
+    <p class="doc-disclaimer">This is a sanitized work sample for portfolio use. Sensitive budgets, internal names, exact formulas, competitor names, and personal names have been removed or generalized. Capability-related figures such as impressions, sample size, completion rate, and qualification rate are preserved where appropriate.</p>
+    <div class="report" id="reportBody"></div>
+  </div>
+</div>
+
+<div id="reports" style="display:none">
+  <template id="tpl-r1">
+<h2>Solvely Back-to-School Integrated Campaign · Student Creator Operations Review</h2>
+<section><h3>Project Overview</h3><p>The Back-to-School integrated campaign ran from <strong>2025.11.05 to 2025.12.15</strong> and combined a KOL track with a student Creator track. I managed the student Creator side, including recruiting follow-up, onboarding guidance, daily content management, and recap documentation.</p><p>The campaign used a combination of <strong>paid amplification and organic exposure</strong>: paid media helped validate and scale promising content, while organic exposure showed whether the content had independent momentum. Later campaigns moved further toward organic-first execution, but this campaign still showed that paid amplification could help test and extend strong materials.</p></section>
+<section><h3>Results</h3><p>At the team campaign level, the cycle delivered <strong>68M total impressions</strong> and achieved <strong>164%</strong> of the target. Overall CPM decreased by <strong>21.1%</strong> versus the prior cycle, and the organic viral rate reached <strong>1.88%</strong>.</p><table><tr><th>Dimension</th><th>Result</th><th>Note</th></tr><tr><td>Campaign scale</td><td><strong>68M</strong> total impressions</td><td>Team / campaign outcome</td></tr><tr><td>Target completion</td><td><strong>164%</strong></td><td>Above the original exposure target</td></tr><tr><td>Cost efficiency</td><td><strong>CPM down 21.1%</strong></td><td>Influenced by paid media and content selection</td></tr><tr><td>Organic viral rate</td><td><strong>1.88%</strong></td><td>Improved from the prior stage</td></tr></table><blockquote>Viral content definition: a single post reaching 100K+ impressions. Data window: 2025.11.05–2025.12.15.</blockquote></section>
+<section><h3>Review Framework</h3><p>The recap broke the campaign into traceable questions: which content deserved amplification, which Creators were more stable, which operational steps affected output quality, and whether paid and organic exposure reinforced each other.</p><ul><li><strong>Content performance</strong>: compared exposure, engagement, and later organic movement across content types.</li><li><strong>Creator operations</strong>: observed onboarding speed, execution stability, and communication cost for new Creators.</li><li><strong>Paid-media feedback</strong>: used paid results to support content-potential judgment rather than relying only on early post performance.</li><li><strong>Future migration</strong>: preserved useful observation dimensions for later campaigns with a stronger organic focus.</li></ul></section>
+<section><h3>Operational Takeaways</h3><p>As the Creator pool scaled, managing only by headcount became inefficient. A more useful approach was to group Creators by content capability, execution stability, and feedback quality.</p><ul><li>Combined content type, execution rhythm, and feedback quality in one observation view to reduce intuition-only judgment.</li><li>Kept closer guidance for new Creators while giving stable Creators clearer targets and recap feedback.</li><li>Used a clear adjustment mechanism for accounts that did not match campaign goals over time, reducing ongoing resource waste.</li></ul></section>
+<section><h3>Strategy Iteration</h3><p>The recap moved beyond whether exposure was large enough and focused more on what happened after exposure: which videos produced later conversion signals, which posts were only short-term volume, and which content could keep moving without paid support.</p><ul><li>Later campaigns placed more emphasis on the stability of organic exposure, including opening density, pacing, and completion signals.</li><li>Short-form viral directions were adjusted to retain stronger student scenarios and product relevance, avoiding content that only chased broad traffic.</li><li>Paid data was used not only for cost and views, but also to test whether a material deserved the next round of organic validation.</li></ul></section>
+  </template>
+
+  <template id="tpl-r2">
+<h2>Student Creator Recruiting Channel Analysis</h2>
+<section><h3>Context</h3><p>This report analyzed student Creator recruiting data across <strong>1,106</strong> applications. The goal was not to present a universal “best channel,” but to clarify quality fluctuation, regional fit, and channel efficiency as recruiting volume scaled.</p></section>
+<section><h3>Analysis Logic</h3><p>I broke recruiting data into four layers: source channel, candidate quality, regional fit, and time trend. Each layer answered an operational question instead of simply listing numbers.</p><table><tr><th>Layer</th><th>Question</th><th>Output</th></tr><tr><td>Source channel</td><td>Is candidate quality stable across sources?</td><td>Input priority judgment</td></tr><tr><td>Candidate quality</td><td>Do pass rate, reshoot rate, and content foundation match expectations?</td><td>Screening criteria optimization</td></tr><tr><td>Regional structure</td><td>How does the target / non-target region mix change?</td><td>Lower invalid processing volume</td></tr><tr><td>Time trend</td><td>Does quality dilute as volume grows?</td><td>Monthly early warning</td></tr></table></section>
+<section><h3>Key Findings</h3><ul><li>Volume growth can dilute quality, so total applications alone are not enough; the share of valid candidates matters.</li><li>Different channels do not bring the same balance of volume and quality. Some are better for reach expansion, while others are better for specific candidate types.</li><li>Referral sources need clearer quality feedback, otherwise higher referral volume can still reduce screening efficiency.</li><li>Upfront regional screening and form-field optimization can meaningfully reduce downstream manual review cost.</li></ul></section>
+<section><h3>Output</h3><p>The report was translated into a recruiting dashboard logic for the operations team: monthly tracking of channel quality, target-region share, candidate pass-through, and abnormal shifts. This helped the team identify channel issues earlier instead of waiting until manual capacity had already been consumed.</p><blockquote>Specific channel details, referral lists, and internal thresholds are omitted; only the public-facing analysis structure is shown.</blockquote></section>
+  </template>
+
+  <template id="tpl-r3">
+<h2>Competitive Benchmarking & Recruiting Strategy Analysis</h2>
+<section><h3>Overview</h3><p>This study covered three leading StudyTok brands, using <strong>697 TikTok student Creator accounts</strong> and <strong>14,914 video samples</strong>. The goal was to turn “competitors look strong” into more answerable questions: whether accounts were still active, whether the content was creator-led, whether viral performance came from a few accounts or broad volume, and which signals were useful for recruiting.</p></section>
+<section><h3>Benchmarking Framework</h3><table><tr><th>Dimension</th><th>Observation Question</th><th>Used For</th></tr><tr><td>Account structure</td><td>Ratio of real creators, brand accounts, and inactive accounts</td><td>Growth-quality judgment</td></tr><tr><td>Activity status</td><td>Whether recent posting remained consistent</td><td>Identify truly useful references</td></tr><tr><td>Content performance</td><td>Median views, peak views, and viral distribution</td><td>Separate stable output from one-off spikes</td></tr><tr><td>Creator profile</td><td>Content type, expression style, and fit with student scenarios</td><td>Support recruiting direction</td></tr></table></section>
+<section><h3>Main Observations</h3><ul><li>Competitor “headcount” does not directly equal threat level; activity and real-creator ratio are more informative.</li><li>Some competitors showed clear signs of volume-based posting, but the share of long-term active Creators was limited.</li><li>High-quality samples concentrated in a smaller group of stronger accounts, suggesting that recruiting should not pursue quantity alone.</li><li>Viral content was not entirely random: video length, opening density, student pain-point scenario, and posting rhythm could all become analysis dimensions.</li></ul></section>
+<section><h3>Visualization Output</h3><p>The report included comparison tables and tiered charts to explain what was worth learning, what was not worth copying, and which accounts could be used as reference samples. For confidentiality and method protection, the public version keeps only the analysis dimensions and removes full lists, formulas, and priority rankings.</p><blockquote>Public content was first organized into a sample set, then converted into comparable indicators. The final output was not to copy competitor actions, but to help the team decide which signals deserved continued tracking.</blockquote></section>
+  </template>
+
+  <template id="tpl-r4">
+<h2>AI & Automation Practices in Creator Operations</h2>
+<section><h3>Background</h3><p>Student Creator recruiting and operations involve many repetitive tasks: reviewing candidate videos, organizing account information, sending outreach, following up on replies, and updating status. Around these steps, I helped define several automation needs, including video screening assistance, account collection and EDM outreach, email knowledge-base response, candidate status flow, and onboarding reminders.</p></section>
+<section><h3>Practice Areas</h3><table><tr><th>Scenario</th><th>AI / Automation Use</th><th>Change</th></tr><tr><td>Candidate screening</td><td>Multimodal AI reads demo videos and outputs structured observations and anomaly prompts</td><td>Review shifts from watching everything in full to prioritizing summaries and boundary cases</td></tr><tr><td>Account collection + EDM</td><td>Similar-account collection, deduplication, first outreach, and UTM return tracking</td><td>Candidate pool is replenished with less manual searching and table copying</td></tr><tr><td>Email system</td><td>Historical email grouping, knowledge-base retrieval, draft generation, and low-confidence escalation</td><td>Repetitive questions are handled first by the system, while sensitive or uncertain cases stay human-led</td></tr><tr><td>Recruiting workflow</td><td>Status transitions, Offer / Onboarding emails, material reminders, and anomaly alerts</td><td>Human work shifts from remembering process steps to handling judgment and exceptions</td></tr></table></section>
+<section><h3>AI Screening Calibration</h3><p>After the scoring assistant was introduced, I helped review <strong>720</strong> cleaned samples to compare AI outputs with final human decisions. The result showed that AI was better suited for first-pass reading, categorization, and anomaly prompts, while experience-heavy judgments should remain with operations teammates.</p><p>The same logic later extended to email and recruiting workflows: high-frequency, low-risk questions could be drafted or routed automatically; contract, payment, negotiation, and content-fit cases remained human-led. The real efficiency gain came from reducing repetitive viewing, copying, chasing, and status maintenance, not from handing all operational judgment to a model.</p></section>
+<section><h3>Tool Selection</h3><p>I use different tools for different tasks: Cursor works well for editing existing code and automation prototypes; Codex is useful for longer local documents, page edits, and batch text checks; Claude is stronger for long-document synthesis, structured writing, and complex wording revisions. For scraping, RAG, email automation, or spreadsheet workflows, I also explore open-source tools on GitHub and evaluate what can be adapted into existing operations.</p><ul><li>Break an operational action into input, judgment, output, and exception path before deciding whether it needs a script, LLM, RAG, or manual review.</li><li>Keep sample calibration and human spot checks for AI outputs instead of treating “automated-looking” as “ready to let go.”</li><li>Prioritize automation for high-frequency, repetitive, low-risk steps, leaving negotiation, judgment, and strategy adjustment to people.</li></ul></section>
+  </template>
+</div>
+
+<script>
+  document.querySelectorAll('.tab').forEach(t=>{
+    t.addEventListener('click',()=>{
+      document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      document.getElementById(t.dataset.p).classList.add('active');
+    });
+  });
+  function toggleWork(el){ el.parentElement.classList.toggle('open'); }
+  const overlay=document.getElementById('overlay'), modal=document.getElementById('modal');
+  const tags={r1:'RECAP · FULL REPORT',r2:'ANALYSIS · FULL REPORT',r3:'RESEARCH · FULL REPORT',r4:'AI WORKFLOW · FULL DOCUMENT'};
+  function openReport(id){
+    event.stopPropagation();
+    const tpl=document.getElementById('tpl-'+id);
+    document.getElementById('reportBody').innerHTML=tpl.innerHTML;
+    document.getElementById('modalTag').textContent=tags[id]||'FULL REPORT';
+    document.querySelector('.modal-scroll').scrollTop=0;
+    overlay.classList.add('show'); modal.classList.add('show'); document.body.classList.add('locked');
+  }
+  function closeReport(){
+    overlay.classList.remove('show'); modal.classList.remove('show'); document.body.classList.remove('locked');
+  }
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeReport(); });
+</script>
+</body>
+</html>
